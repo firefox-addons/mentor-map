@@ -19,5 +19,12 @@ const mentors = [
 			"emailId": "nkarthic95@gmail.com",
 			"place": "Chennai, India",
 			"mozillians_url": "https://mozillians.org/en-US/u/karthic/"
+		},
+		{
+			"name": "Viswaprasath KS",
+			"position": [12.9031466, 80.0652336],
+			"emailId": "shihan.viswa@gmail.com",
+			"place": "Chennai, India",
+			"mozillians_url": "https://mozillians.org/en-US/u/shihan.viswa/"
 		}
 ];
