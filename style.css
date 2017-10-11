@@ -15,6 +15,7 @@ body {
 .leaflet-popup-content span {
 	display: block;
 }
+
 .leaflet-popup-content .avatar {
 	background-image: url(img/icon_48.png);
 	background-size: cover;
