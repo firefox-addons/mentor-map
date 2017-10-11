@@ -6,7 +6,12 @@ This repository populates all volunteers webextensions mentors on map.
 
 - fork this repo
 - Modify `data/mentors.js` and add your details
-- send PR
+- send PR with a comment on how you met with our guidelines.
+
+## Guidelines to become a mentor
+- You must have built and published atleast one extension using atleast one WebExtension API.
+- Should have written atleast one technical blogpost/tutorial on Extensions 
+- (added advantage) Mentored in atleast one Firefox Add-ons event.
 
 ## Get started
 
