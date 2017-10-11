@@ -1,0 +1,23 @@
+body {
+	margin: 20px;
+}
+
+#mentorsMap {
+	height: calc(100vh - 40px);
+}
+
+.leaflet-popup-content > div {
+    display: inline-block;
+    margin-right: 10px;
+    vertical-align: middle;
+}
+
+.leaflet-popup-content span {
+	display: block;
+}
+.leaflet-popup-content .avatar {
+	background-image: url(img/icon_48.png);
+	background-size: cover;
+	height: 32px;
+	width: 32px;
+}
