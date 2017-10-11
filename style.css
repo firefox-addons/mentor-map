@@ -15,13 +15,13 @@ body {
 .leaflet-popup-content span {
 	display: block;
 }
+
 .leaflet-popup-content .avatar {
 	background-image: url(img/icon_48.png);
 	background-size: cover;
 	height: 32px;
 	width: 32px;
 }
-
 #searchQuery {
     width: 50%; /* Full-width */
     font-size: 16px; /* Increase font-size */
