@@ -1,3 +1,12 @@
+/*
+{
+	"name": "<Your name>",
+	"position": [<latitude>, <longitude>],
+	"emailId": "<Email ID>",
+	"place": "<City>, <Country>",
+	"mozillians_url": "<Mozillian URL>"
+}
+*/
 const mentors = [
 		{
 			"name": "Santosh Viswanatham",
