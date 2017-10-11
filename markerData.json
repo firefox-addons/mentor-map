@@ -2,12 +2,16 @@
 	"mentors": [{
 			"name": "Santosh Viswanatham",
 			"position": [17.409703, 78.505197],
-			"emailId": "viswanathamsantosh@gmail.com"
+			"emailId": "viswanathamsantosh@gmail.com",
+			"place": "Hyderabad, India",
+			"mozillians_url": "https://mozillians.org/en-US/u/isantoshv/" 
 		},
 		{
 			"name": "Test User",
 			"position": [51.505, -0.09],
-			"emailId": "viswanathamsantosh@gmail.com"
+			"emailId": "viswanathamsantosh@gmail.com",
+			"place": "Hyderabad, India",
+			"mozillians_url": "https://mozillians.org/en-US/u/isantoshv/
 		}
 	]
 }
