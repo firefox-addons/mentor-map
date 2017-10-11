@@ -1,4 +1,4 @@
-### Mentors map
+## Mentors map
 
 This repository populates all volunteers webextensions mentors on map.
 
@@ -8,21 +8,21 @@ This repository populates all volunteers webextensions mentors on map.
 - Modify `data/mentors.js` and add your details
 - send PR with a comment on how you met with our guidelines.
 
-## Guidelines to become a mentor
+### Guidelines to become a mentor
 - You must have built and published atleast one extension using atleast one WebExtension API.
 - Should have written atleast one technical blogpost/tutorial on Extensions 
-- (added advantage) Mentored in atleast one Firefox Add-ons event.
+- (added advantage) Mentored/Attended in atleast one Firefox Add-ons event.
 
-## Get started
+### Get started
 
 * type `yarn` to install all dependencies
 * type `yarn go` to start a local server 
 
-## Development commands
+### Development commands
 
 Here are some commands you can run:
 
-# For NPM
+#### For NPM
 
 | Command                     | Description          |
 |-----------------------------|----------------------|
@@ -30,7 +30,7 @@ Here are some commands you can run:
 | npm run build               | build for Deployment |
 
 
-# For Yarn
+#### For Yarn
 
 | Command                     | Description          |
 |-----------------------------|----------------------|
