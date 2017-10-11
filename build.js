@@ -76,8 +76,6 @@ var _leaflet = __webpack_require__(1);
 
 var _leaflet2 = _interopRequireDefault(_leaflet);
 
-var _mentors = __webpack_require__(2);
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -115,7 +113,7 @@ var mentorsMap = function () {
 		value: function placeMarkers() {
 			var _this = this;
 
-			_mentors.mentors.forEach(function (mentor) {
+			mentors.forEach(function (mentor) {
 				var popupContent = '\n\t\t\t<div class=\'avatar\'></div>\n\t\t\t<div>\n\t\t\t\t<span><b>' + mentor.name + '</b><span>\n\t\t\t\t<span>' + mentor.place + '<span>\n\t\t\t\t<span><a href=\'mailto:' + mentor.emailId + '\'>' + mentor.emailId + '</a></span>\n\t\t\t\t<span><a href=\'' + mentor.mozillians_url + '\' target=\'_blank\'>' + mentor.mozillians_url + '</a></span>\n\t\t\t\t\n\t\t\t</div>';
 				var marker = _leaflet2.default.marker(mentor.position).addTo(_this.map);
 
@@ -13746,33 +13744,6 @@ exports.map = createMap;
 })));
 //# sourceMappingURL=leaflet-src.js.map
 
-
-/***/ }),
-/* 2 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-module.exports.mentors = [{
-	"name": "Santosh Viswanatham",
-	"position": [17.409703, 78.505197],
-	"emailId": "viswanathamsantosh@gmail.com",
-	"place": "Hyderabad, India",
-	"mozillians_url": "https://mozillians.org/en-US/u/isantoshv/"
-}, {
-	"name": "Trishul Goel",
-	"position": [28.6129167, 77.227321],
-	"emailId": "trishul.goel@gmail.com",
-	"place": "New Delhi, India",
-	"mozillians_url": "https://mozillians.org/en-US/u/trishul/"
-}, {
-	"name": "Karthickeyan N",
-	"position": [13.0827, 80.2707],
-	"emailId": "nkarthic95@gmail.com",
-	"place": "Chennai, India",
-	"mozillians_url": "https://mozillians.org/en-US/u/karthic/"
-}];
 
 /***/ })
 /******/ ]);

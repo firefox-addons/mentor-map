@@ -1,8 +1,6 @@
 import L from 'leaflet';
-import { mentors } from '../data/mentors';
 
 class mentorsMap {
-
 	constructor(props) {
 		this.mapElement = {};
 		this.map = {};
@@ -20,15 +18,15 @@ class mentorsMap {
 
 	drawMap() {
 		this.map = L.map(this.mapId, {
-		    center: this.mapCenter,
-		    zoom: this.mapZoom
+			center: this.mapCenter,
+			zoom: this.mapZoom
 		});
-		L.tileLayer(this.mapTitleLayer).addTo(this.map);	
+		L.tileLayer(this.mapTitleLayer).addTo(this.map);
 	}
 
 	placeMarkers() {
 		mentors.forEach(mentor => {
-			const popupContent=`
+			const popupContent = `
 			<div class='avatar'></div>
 			<div>
 				<span><b>${mentor.name}</b><span>
@@ -44,7 +42,7 @@ class mentorsMap {
 	}
 }
 
-const mapIt = new mentorsMap;
+const mapIt = new mentorsMap();
 mapIt.createMapElement();
 mapIt.drawMap();
 mapIt.placeMarkers();

@@ -1,4 +1,4 @@
-module.exports.mentors = [
+const mentors = [
 		{
 			"name": "Santosh Viswanatham",
 			"position": [17.409703, 78.505197],
