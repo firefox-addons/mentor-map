@@ -13766,6 +13766,12 @@ module.exports.mentors = [{
 	"emailId": "trishul.goel@gmail.com",
 	"place": "New Delhi, India",
 	"mozillians_url": "https://mozillians.org/en-US/u/trishul/"
+}, {
+	"name": "Karthickeyan N",
+	"position": [13.0827, 80.2707],
+	"emailId": "nkarthic95@gmail.com",
+	"place": "Chennai, India",
+	"mozillians_url": "https://mozillians.org/en-US/u/karthic/"
 }];
 
 /***/ })
