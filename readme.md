@@ -5,7 +5,7 @@ This repository populates all volunteers webextensions mentors on map.
 ### Adding mentors
 
 - fork this repo
-- Modify `data/mntors.js` and add your details
+- Modify `data/mentors.js` and add your details
 - send PR
 
 ## Get started
@@ -17,7 +17,7 @@ This repository populates all volunteers webextensions mentors on map.
 
 Here are some commands you can run:
 
-#For NPM
+# For NPM
 
 | Command                     | Description          |
 |-----------------------------|----------------------|
@@ -25,7 +25,7 @@ Here are some commands you can run:
 | npm run build               | build for Deployment |
 
 
-#For Yarn
+# For Yarn
 
 | Command                     | Description          |
 |-----------------------------|----------------------|
