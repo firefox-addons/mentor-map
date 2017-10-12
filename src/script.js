@@ -8,10 +8,13 @@ class mentorsMap {
 		this.mapCenter = [51.505, -0.09];
 		this.mapZoom = 2;
 		this.mapTitleLayer = 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
-		this.tableId = 'mentorsTable';
-		this.tableDivId = 'mentorsTableContainer';
-		this.tableElement = {};
-		this.tableDivElement = {};
+		this.holder = 'tableHolder';
+		this.searchTerm = '';
+		this.createMapElement();
+		this.drawMap();
+		this.placeMarkers();
+		this.createTableElement();
+		this.populateTable();
 	}
 
 	createMapElement() {
@@ -44,57 +47,67 @@ class mentorsMap {
 			marker.bindPopup(popupContent);
 		});
 	}
-	searchKeyUp(){
-		alert("It works");
-	}
-	createTableElement() {
-		this.inputContainer = document.createElement('input');
-		this.inputContainer.setAttribute('type', 'text');
-		this.inputContainer.setAttribute('id','searchQuery');
-		this.inputContainer.setAttribute('placeholder','Search a Mentor');
-		
-		document.body.appendChild(this.inputContainer);
-		
-		this.tableDivElement = document.createElement('div');
-		this.tableDivElement.setAttribute('id', this.tableDivId);
-		this.tableElement = document.createElement('table');
-		this.tableElement.setAttribute('id', this.tableId);
-		this.tableDivElement.appendChild(this.tableElement);
-		document.body.appendChild(this.tableDivElement);
-		
-		let that = this;
-		this.inputContainer.addEventListener('keyup',function(){
-			var input, filter, table, tr, td1, td2, td3, i;
-		    input = that.inputContainer;
-		    filter = input.value.toUpperCase();
-		    table = that.tableElement;
-		    tr = table.getElementsByTagName("tr");
 
-		    for (i = 1; i < tr.length; i++) {
-			    td1 = tr[i].getElementsByTagName("td")[0];
-			    td2 = tr[i].getElementsByTagName("td")[1];
-			    td3 = tr[i].getElementsByTagName("td")[2];
-	  	        if (td1.innerHTML.toUpperCase().indexOf(filter) > -1 || td2.innerHTML.toUpperCase().indexOf(filter) > -1 || td3.innerHTML.toUpperCase().indexOf(filter) > -1) {
-			        tr[i].style.display = "";
-			    } else {
-			        tr[i].style.display = "none";
-			    }
-			  }
+	setAttributes(ele, attrs) {
+	  for(let key in attrs) {
+	    ele.setAttribute(key, attrs[key]);
+	  }
+	}
+
+	createTableElement() {
+		const inputBox = document.createElement('input');
+		this.setAttributes(inputBox, {
+			type: 'text',
+			id: 'searchQuery',
+			placeholder: 'Search a mentor'
+		});
+		
+		document.body.appendChild(inputBox);
+		
+		const tableDiv = document.createElement('div');
+		this.setAttributes(tableDiv, {
+			id: this.holder,
+		});
+
+		const table = document.createElement('table');
+		table.setAttribute('id', this.tableId);
+		tableDiv.appendChild(table);
+		document.body.appendChild(tableDiv);
+
+		inputBox.addEventListener('keyup', e => {
+			this.searchTerm = e.target.value;
+			this.populateTable();
 		});
 	}
-	insertMentorTable(){
-		let tableRows = "<tr class='header'><th>Name</th><th>Place</th><th>Email Id</th></tr>";
+
+	populateTable(){
+		const table = document.getElementById(this.holder).children[0];
+		table.innerHTML = `
+			<tr class='header'>
+				<th>Name</th>
+				<th>Place</th>
+				<th>Email Id</th>
+			</tr>
+		`;
 		mentors.forEach(mentor => {
-			let row ="<tr><td>"+mentor.name+"</td><td>"+mentor.place+"</td><td>"+mentor.emailId+"</td></tr>";
-			tableRows = tableRows + row; 
+
+			if(
+				this.searchTerm === '' ||
+				mentor.name.toLowerCase().indexOf(this.searchTerm) > -1 ||
+				mentor.place.toLowerCase().indexOf(this.searchTerm) > -1 ||
+				mentor.emailId.toLowerCase().indexOf(this.searchTerm) > -1
+			){
+				let row =`
+					<tr>
+						<td>${mentor.name}</td>
+						<td>${mentor.place}</td>
+						<td>${mentor.emailId}</td>
+					</tr>`;
+				table.innerHTML += row;
+			}
+
 		});
-		document.getElementById("mentorsTable").innerHTML =tableRows;
 	}
 }
 
 const mapIt = new mentorsMap();
-mapIt.createMapElement();
-mapIt.drawMap();
-mapIt.placeMarkers();
-mapIt.createTableElement();
-mapIt.insertMentorTable();

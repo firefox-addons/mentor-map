@@ -36,3 +36,6 @@ Here are some commands you can run:
 |-----------------------------|----------------------|
 | yarn go                     | Start the dev server |
 | yarn build                  | build for Deployment |
+
+### For Maintainers
+Please build before pushing changes so as to reflect changes on gh-pages.

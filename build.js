@@ -90,6 +90,13 @@ var mentorsMap = function () {
 		this.mapCenter = [51.505, -0.09];
 		this.mapZoom = 2;
 		this.mapTitleLayer = 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
+		this.holder = 'tableHolder';
+		this.searchTerm = '';
+		this.createMapElement();
+		this.drawMap();
+		this.placeMarkers();
+		this.createTableElement();
+		this.populateTable();
 	}
 
 	_createClass(mentorsMap, [{
@@ -121,24 +128,62 @@ var mentorsMap = function () {
 			});
 		}
 	}, {
-		key: 'createTableElement',
-		value: function createTableElement() {
-			this.tableElement = document.createElement('div');
-			this.tableElement.setAttribute('id', this.tableId);
-			document.body.appendChild(this.tableElement);
+		key: 'setAttributes',
+		value: function setAttributes(ele, attrs) {
+			for (var key in attrs) {
+				ele.setAttribute(key, attrs[key]);
+			}
 		}
 	}, {
-		key: 'insertMentorTable',
-		value: function insertMentorTable() {}
+		key: 'createTableElement',
+		value: function createTableElement() {
+			var _this2 = this;
+
+			var inputBox = document.createElement('input');
+			this.setAttributes(inputBox, {
+				type: 'text',
+				id: 'searchQuery',
+				placeholder: 'Search a mentor'
+			});
+
+			document.body.appendChild(inputBox);
+
+			var tableDiv = document.createElement('div');
+			this.setAttributes(tableDiv, {
+				id: this.holder
+			});
+
+			var table = document.createElement('table');
+			table.setAttribute('id', this.tableId);
+			tableDiv.appendChild(table);
+			document.body.appendChild(tableDiv);
+
+			inputBox.addEventListener('keyup', function (e) {
+				_this2.searchTerm = e.target.value;
+				_this2.populateTable();
+			});
+		}
+	}, {
+		key: 'populateTable',
+		value: function populateTable() {
+			var _this3 = this;
+
+			var table = document.getElementById(this.holder).children[0];
+			table.innerHTML = '\n\t\t\t<tr class=\'header\'>\n\t\t\t\t<th>Name</th>\n\t\t\t\t<th>Place</th>\n\t\t\t\t<th>Email Id</th>\n\t\t\t</tr>\n\t\t';
+			mentors.forEach(function (mentor) {
+
+				if (_this3.searchTerm === '' || mentor.name.toLowerCase().indexOf(_this3.searchTerm) > -1 || mentor.place.toLowerCase().indexOf(_this3.searchTerm) > -1 || mentor.emailId.toLowerCase().indexOf(_this3.searchTerm) > -1) {
+					var row = '\n\t\t\t\t\t<tr>\n\t\t\t\t\t\t<td>' + mentor.name + '</td>\n\t\t\t\t\t\t<td>' + mentor.place + '</td>\n\t\t\t\t\t\t<td>' + mentor.emailId + '</td>\n\t\t\t\t\t</tr>';
+					table.innerHTML += row;
+				}
+			});
+		}
 	}]);
 
 	return mentorsMap;
 }();
 
 var mapIt = new mentorsMap();
-mapIt.createMapElement();
-mapIt.drawMap();
-mapIt.placeMarkers();
 
 /***/ }),
 /* 1 */
