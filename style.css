@@ -4,6 +4,10 @@ body {
 
 header {
     text-align: center;
+    background-color: cadetblue;
+    color: #fff;
+    padding: 5px;
+    margin-top: -20px;
 }
 
 #mentorsMap {
