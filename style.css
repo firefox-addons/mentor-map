@@ -5,6 +5,14 @@ body {
 
 header {
     text-align: center;
+    font-style: oblique;
+    font-family: 'Roboto', sans-serif;
+    font-size: 23px;
+    color: #0095DD;
+}
+
+#headerContent {
+    color: orange;
 }
 
 #mentorsMap {
