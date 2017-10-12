@@ -120,6 +120,16 @@ var mentorsMap = function () {
 				marker.bindPopup(popupContent);
 			});
 		}
+	}, {
+		key: 'createTableElement',
+		value: function createTableElement() {
+			this.tableElement = document.createElement('div');
+			this.tableElement.setAttribute('id', this.tableId);
+			document.body.appendChild(this.tableElement);
+		}
+	}, {
+		key: 'insertMentorTable',
+		value: function insertMentorTable() {}
 	}]);
 
 	return mentorsMap;
