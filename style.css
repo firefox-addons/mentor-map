@@ -11,10 +11,11 @@ header {
 	height: calc(100vh - 40px);
 }
 
-.leaflet-popup-content > div {
-    display: inline-block;
-    margin-right: 10px;
-    vertical-align: middle;
+.leaflet-popup-content {
+    align-items: center;
+    display: flex;
+    margin: 10px;
+    max-width: 200px;
 }
 
 .leaflet-popup-content span {
@@ -24,8 +25,9 @@ header {
 .leaflet-popup-content .avatar {
 	background-image: url(img/icon_48.png);
 	background-size: cover;
-	height: 32px;
-	width: 32px;
+	height: 64px;
+    margin-right: 10px;
+	width: 64px;
 }
 #searchQuery {
     border: 1px solid #ddd;
@@ -41,23 +43,28 @@ header {
 	overflow-y: auto;
 }
 #tableHolder table {
-    border-collapse: collapse; /* Collapse borders */
-    width: 100%; /* Full-width */
-    border: 1px solid #ddd; /* Add a grey border */
-    font-size: 18px; /* Increase font-size */
+    border-collapse: collapse;
+    width: 100%;
+    border: 1px solid #ddd;
+    font-size: 18px;
 }
 
 #tableHolder table th, #tableHolder table td {
-    text-align: left; /* Left-align text */
-    padding: 12px; /* Add padding */
+    text-align: left;
+    padding: 12px;
 }
 
 #tableHolder table tr {
-    /* Add a bottom border to all table rows */
     border-bottom: 1px solid #ddd; 
 }
 
 #tableHolder table tr.header, #tableHolder table tr:hover {
-    /* Add a grey background color to the table header and on hover */
     background-color: #f1f1f1;
+}
+
+/* mobile first \o/ */
+@media screen and (min-width: 376px) {
+    .leaflet-popup-content {
+        min-width: 350px;
+    }
 }
