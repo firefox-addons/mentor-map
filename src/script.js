@@ -37,7 +37,7 @@ class mentorsMap {
 			const gravatarHash = md5(mentor.emailId.trim().toLowerCase());
 			const popupContent = `
 			<div class='avatar'>
-				<img src='https://www.gravatar.com/avatar/${gravatarHash}?s=32&d=blank'>
+				<img src='https://www.gravatar.com/avatar/${gravatarHash}?s=64&d=blank'>
 			</div>
 			<div>
 				<span><b>${mentor.name}</b><span>
