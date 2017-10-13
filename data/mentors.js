@@ -35,5 +35,12 @@ const mentors = [
 			"emailId": "shihan.viswa@gmail.com",
 			"place": "Chennai, India",
 			"mozillians_url": "https://mozillians.org/en-US/u/shihan.viswa/"
+		},
+		{
+			"name": "Shivam Singhal",
+			"position": [28.658404, 77.280606],
+			"emailId": "shivams2799@gmail.com",
+			"place": "New Delhi, India",
+			"mozillians_url": "https://mozillians.org/en-US/u/championshuttler/"
 		}
 ];
