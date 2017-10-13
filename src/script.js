@@ -1,4 +1,5 @@
 import L from 'leaflet';
+import md5 from 'md5';
 
 class mentorsMap {
 	constructor(props) {
@@ -33,8 +34,11 @@ class mentorsMap {
 
 	placeMarkers() {
 		mentors.forEach(mentor => {
+			const gravatarHash = md5(mentor.emailId.trim().toLowerCase());
 			const popupContent = `
-			<div class='avatar'></div>
+			<div class='avatar'>
+				<img src='https://www.gravatar.com/avatar/${gravatarHash}?s=64&d=blank'>
+			</div>
 			<div>
 				<span><b>${mentor.name}</b><span>
 				<span>${mentor.place}<span>
