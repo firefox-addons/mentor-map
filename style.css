@@ -1,10 +1,65 @@
 body {
 	margin: 20px;
 	font-family: 'Roboto', sans-serif;
+	
 }
 
 header {
+	width: 100%;
     text-align: center;
+    background-position: 90% 100%;
+    background-repeat: no-repeat;
+    height: 300px;
+    background-color: #031643;
+    
+}
+
+.head_main{
+    color: white;
+    margin-top: -20px;
+    width: auto;
+
+}
+
+#headtext{
+    margin-top: -30px;
+
+
+}
+#logo {
+	height: 100px;
+    padding: 15px;
+    width: 200px;
+    position: relative;
+
+}
+
+#logo img {
+	height: 100px;
+    display: flex;
+    position: relative;
+}
+#mozhead {
+	width: 140px;
+    padding: 20px;
+    margin-left: 200px;
+    margin-top: -150px;
+    float: right;
+}
+#mozhead img{
+	height: 50px;
+    border-radius: 0px 0px 17px 17px;
+}
+
+
+h1{
+	font-family: 'Zilla Slab', serif;
+    font-size: 50px;
+    margin-top: -22px;
+}
+
+h2 p{
+    font-family: 'Zilla Slab', serif;
 }
 
 #mentorsMap {
@@ -67,4 +122,15 @@ header {
     .leaflet-popup-content {
         min-width: 350px;
     }
+     #headtext {
+        width: fit-content;
+  }
+}
+
+@media (min-width: 740px) {
+  #headtext {
+       
+        width: fit-content;
+  }
+
 }
