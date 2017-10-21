@@ -1,0 +1,104 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/usr/bin/nodejs', '/usr/bin/npm', 'install' ]
+2 info using npm@3.5.2
+3 info using node@v4.2.6
+4 silly loadCurrentTree Starting
+5 silly install loadCurrentTree
+6 silly install readLocalPackageData
+7 silly install normalizeTree
+8 silly loadCurrentTree Finishing
+9 silly loadIdealTree Starting
+10 silly install loadIdealTree
+11 silly cloneCurrentTree Starting
+12 silly install cloneCurrentTreeToIdealTree
+13 silly cloneCurrentTree Finishing
+14 silly loadShrinkwrap Starting
+15 silly install loadShrinkwrap
+16 silly loadShrinkwrap Finishing
+17 silly loadAllDepsIntoIdealTree Starting
+18 silly install loadAllDepsIntoIdealTree
+19 silly fetchNamedPackageData leaflet
+20 silly mapToRegistry name leaflet
+21 silly mapToRegistry using default registry
+22 silly mapToRegistry registry https://registry.npmjs.org/
+23 silly mapToRegistry uri https://registry.npmjs.org/leaflet
+24 silly fetchNamedPackageData md5
+25 silly mapToRegistry name md5
+26 silly mapToRegistry using default registry
+27 silly mapToRegistry registry https://registry.npmjs.org/
+28 silly mapToRegistry uri https://registry.npmjs.org/md5
+29 verbose request uri https://registry.npmjs.org/leaflet
+30 verbose request no auth needed
+31 info attempt registry request try #1 at 2:25:57 AM
+32 verbose request id 1e8ce084a86da3d1
+33 http request GET https://registry.npmjs.org/leaflet
+34 verbose request uri https://registry.npmjs.org/md5
+35 verbose request no auth needed
+36 info attempt registry request try #1 at 2:25:57 AM
+37 http request GET https://registry.npmjs.org/md5
+38 info retry will retry, error on last attempt: Error: tunneling socket could not be established, cause=socket hang up
+39 info retry will retry, error on last attempt: Error: tunneling socket could not be established, cause=socket hang up
+40 info attempt registry request try #2 at 2:26:08 AM
+41 http request GET https://registry.npmjs.org/md5
+42 info attempt registry request try #2 at 2:26:09 AM
+43 http request GET https://registry.npmjs.org/leaflet
+44 info retry will retry, error on last attempt: Error: tunneling socket could not be established, cause=socket hang up
+45 info retry will retry, error on last attempt: Error: tunneling socket could not be established, cause=socket hang up
+46 info attempt registry request try #3 at 2:27:09 AM
+47 http request GET https://registry.npmjs.org/md5
+48 info attempt registry request try #3 at 2:27:09 AM
+49 http request GET https://registry.npmjs.org/leaflet
+50 silly fetchPackageMetaData Error: tunneling socket could not be established, cause=socket hang up
+50 silly fetchPackageMetaData     at ClientRequest.onError (/usr/share/npm/node_modules/request/node_modules/tunnel-agent/index.js:174:17)
+50 silly fetchPackageMetaData     at ClientRequest.g (events.js:260:16)
+50 silly fetchPackageMetaData     at emitOne (events.js:77:13)
+50 silly fetchPackageMetaData     at ClientRequest.emit (events.js:169:7)
+50 silly fetchPackageMetaData     at TLSSocket.socketErrorListener (_http_client.js:258:9)
+50 silly fetchPackageMetaData     at emitOne (events.js:77:13)
+50 silly fetchPackageMetaData     at TLSSocket.emit (events.js:169:7)
+50 silly fetchPackageMetaData     at emitErrorNT (net.js:1256:8)
+50 silly fetchPackageMetaData     at nextTickCallbackWith2Args (node.js:441:9)
+50 silly fetchPackageMetaData     at process._tickCallback (node.js:355:17)
+50 silly fetchPackageMetaData  error for leaflet@^1.2.0 { [Error: tunneling socket could not be established, cause=socket hang up] code: 'ECONNRESET' }
+51 silly fetchPackageMetaData Error: tunneling socket could not be established, cause=socket hang up
+51 silly fetchPackageMetaData     at ClientRequest.onError (/usr/share/npm/node_modules/request/node_modules/tunnel-agent/index.js:174:17)
+51 silly fetchPackageMetaData     at ClientRequest.g (events.js:260:16)
+51 silly fetchPackageMetaData     at emitOne (events.js:77:13)
+51 silly fetchPackageMetaData     at ClientRequest.emit (events.js:169:7)
+51 silly fetchPackageMetaData     at TLSSocket.socketErrorListener (_http_client.js:258:9)
+51 silly fetchPackageMetaData     at emitOne (events.js:77:13)
+51 silly fetchPackageMetaData     at TLSSocket.emit (events.js:169:7)
+51 silly fetchPackageMetaData     at emitErrorNT (net.js:1256:8)
+51 silly fetchPackageMetaData     at nextTickCallbackWith2Args (node.js:441:9)
+51 silly fetchPackageMetaData     at process._tickCallback (node.js:355:17)
+51 silly fetchPackageMetaData  error for md5@^2.2.1 { [Error: tunneling socket could not be established, cause=socket hang up] code: 'ECONNRESET' }
+52 silly rollbackFailedOptional Starting
+53 silly rollbackFailedOptional Finishing
+54 silly runTopLevelLifecycles Starting
+55 silly runTopLevelLifecycles Finishing
+56 silly install printInstalled
+57 verbose stack Error: tunneling socket could not be established, cause=socket hang up
+57 verbose stack     at ClientRequest.onError (/usr/share/npm/node_modules/request/node_modules/tunnel-agent/index.js:174:17)
+57 verbose stack     at ClientRequest.g (events.js:260:16)
+57 verbose stack     at emitOne (events.js:77:13)
+57 verbose stack     at ClientRequest.emit (events.js:169:7)
+57 verbose stack     at TLSSocket.socketErrorListener (_http_client.js:258:9)
+57 verbose stack     at emitOne (events.js:77:13)
+57 verbose stack     at TLSSocket.emit (events.js:169:7)
+57 verbose stack     at emitErrorNT (net.js:1256:8)
+57 verbose stack     at nextTickCallbackWith2Args (node.js:441:9)
+57 verbose stack     at process._tickCallback (node.js:355:17)
+58 verbose cwd /home/ishita/mentor-map
+59 error Linux 4.8.0-59-generic
+60 error argv "/usr/bin/nodejs" "/usr/bin/npm" "install"
+61 error node v4.2.6
+62 error npm  v3.5.2
+63 error code ECONNRESET
+64 error network tunneling socket could not be established, cause=socket hang up
+65 error network This is most likely not a problem with npm itself
+65 error network and is related to network connectivity.
+65 error network In most cases you are behind a proxy or have bad network settings.
+65 error network
+65 error network If you are behind a proxy, please make sure that the
+65 error network 'proxy' config is set properly.  See: 'npm help config'
+66 verbose exit [ 1, true ]

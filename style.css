@@ -1,12 +1,61 @@
 body {
 	margin: 20px;
 	font-family: 'Roboto', sans-serif;
+	
 }
 
 header {
+	width: 100%;
     text-align: center;
+    background-position: 90% 100%;
+    background-repeat: no-repeat;
+    
 }
 
+.head_main{
+	background-color: #0996f8;
+	height: 250px;
+}
+
+#logo {
+	height: 100px;
+    padding: 15px;
+    width: 200px;
+}
+
+#logo img {
+	height: 100px;
+    float: left;
+    margin-left: 100px;
+}
+#mozhead {
+	width: 200px;
+    padding: 20px;
+    margin-left: 200px;
+    margin-top: -150px;
+    float: right;
+}
+#mozhead img{
+	height: 50px;
+    border-radius: 0px 0px 17px 17px;
+}
+
+
+#headtext{
+	height: 120px;
+    position: absolute;
+    margin-left: 250px;
+        margin-top: -60px;
+}
+h1{
+	font-family: 'Concert One', cursive;
+    font-size: 50px;
+    margin-top: -40px;
+}
+
+p{
+	margin-top: 30px;
+}
 #mentorsMap {
 	height: calc(100vh - 40px);
 }
