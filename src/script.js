@@ -25,8 +25,7 @@ class mentorsMap {
 	}
 
 	drawMap() {
-		this.map = L.map(this.mapId)
-								.fitBounds(this.getMentorsPositions());
+		this.map = L.map(this.mapId).fitBounds(this.getMentorsPositions());
 		L.tileLayer(this.mapTitleLayer).addTo(this.map);
 	}
 

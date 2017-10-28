@@ -152,11 +152,15 @@ var mentorsMap = function () {
 	}, {
 		key: 'drawMap',
 		value: function drawMap() {
-			this.map = _leaflet2.default.map(this.mapId, {
-				center: this.mapCenter,
-				zoom: this.mapZoom
-			});
+			this.map = _leaflet2.default.map(this.mapId).fitBounds(this.getMentorsPositions());
 			_leaflet2.default.tileLayer(this.mapTitleLayer).addTo(this.map);
+		}
+	}, {
+		key: 'getMentorsPositions',
+		value: function getMentorsPositions() {
+			return mentors.map(function (mentor) {
+				return mentor.position;
+			});
 		}
 	}, {
 		key: 'placeMarkers',
@@ -14119,7 +14123,7 @@ exports.map = createMap;
 /*!
  * Determine if an object is a Buffer
  *
- * @author   Feross Aboukhadijeh <feross@feross.org> <http://feross.org>
+ * @author   Feross Aboukhadijeh <https://feross.org>
  * @license  MIT
  */
 
