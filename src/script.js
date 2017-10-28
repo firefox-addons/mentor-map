@@ -25,11 +25,13 @@ class mentorsMap {
 	}
 
 	drawMap() {
-		this.map = L.map(this.mapId, {
-			center: this.mapCenter,
-			zoom: this.mapZoom
-		});
+		this.map = L.map(this.mapId)
+								.fitBounds(this.getMentorsPositions());
 		L.tileLayer(this.mapTitleLayer).addTo(this.map);
+	}
+
+	getMentorsPositions() {
+		return mentors.map(mentor => mentor.position)
 	}
 
 	placeMarkers() {
