@@ -5,10 +5,8 @@
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.2.0/dist/leaflet.css"
    integrity="sha512-M2wvCLH6DSRazYeZRIm1JnYyh22purTM+FDB5CsyxtQJYeKq83arPe5wgbNmcFXGqiSH2XR8dT/fJISVA1r/zQ=="
    crossorigin=""/>
-        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300|Roboto|Zilla+Slab" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Concert+One|Roboto" rel="stylesheet">
         <link rel="stylesheet" href="style.css">
-        <title>Firefox Webextensions mentors and events</title>
-        <link rel="icon" type="image/x-icon" href="https://addons.cdn.mozilla.net/static/img/favicon.ico?b=5fa7d1f9-59ef6e72">
     </head>
     <body>
     <header>
@@ -16,20 +14,19 @@
     <div class="head_main">
 
         <div id="logo">
-            <img src="img/firefox.jpg">
+            <img src="img/logo.png">
         </div>
         <div id="mozhead">
-            <img src="img/moz.png">
+            <img src="img/icon_48.png">
         </div>
-        <center>
         <div id="headtext">
 	    <h2>Firefox Add-ons developer </h2>
+        <br>
         <h1>Mentors map</h1>
         <p>
             You can find the mentors either in the map or just search them in the table provided below.
         </p>
         </div>
-        </center>
     </div>    
         </header>
 
