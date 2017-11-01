@@ -1,40 +1,32 @@
-import L from "leaflet";
-import md5 from "md5";
+import L from 'leaflet';
+import md5 from 'md5';
 
 class mentorsMap {
   constructor(props) {
     this.mapElement = {};
     this.map = {};
-    this.mapId = "mentorsMap";
+    this.mapId = 'mentorsMap';
     this.mapCenter = [51.505, -0.09];
     this.mapZoom = 2;
-    this.mapTitleLayer = "http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png";
-    this.holder = "tableHolder";
-    this.searchTerm = "";
-    this.sortKey = "";
-    this.sortOrder = "";
+    this.mapTitleLayer = 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
+    this.holder = 'tableHolder';
+    this.searchTerm = '';
+    this.sortKey = 'name';
+    this.sortOrder = 'ASC';
     this.createMapElement();
     this.drawMap();
     this.placeMarkers();
     this.createTableElement();
     this.populateTable();
   }
-  setSortKey() {
-    this.setSortOrder();
-  }
+
   setSortOrder() {
-    switch (this.sortOrder) {
-      case "DESC":
-        this.sortOrder = "ASC";
-        break;
-      case "ASC":
-      default:
-        this.sortOrder = "DESC";
-    }
+    this.sortOrder = this.sortOrder == 'ASC' ? 'DESC' : 'ASC'
   }
+
   createMapElement() {
-    this.mapElement = document.createElement("div");
-    this.mapElement.setAttribute("id", this.mapId);
+    this.mapElement = document.createElement('div');
+    this.mapElement.setAttribute('id', this.mapId);
     document.body.appendChild(this.mapElement);
   }
 
@@ -51,16 +43,16 @@ class mentorsMap {
     mentors.forEach(mentor => {
       const gravatarHash = md5(mentor.emailId.trim().toLowerCase());
       const popupContent = `
-			<div class='avatar'>
-				<img src='https://www.gravatar.com/avatar/${gravatarHash}?s=64&d=blank'>
-			</div>
-			<div>
-				<span><b>${mentor.name}</b><span>
-				<span>${mentor.place}<span>
-				<span><a href='mailto:${mentor.emailId}'>${mentor.emailId}</a></span>
-				<span><a href='${mentor.mozillians_url}' target='_blank'>${mentor.mozillians_url}</a></span>
+      <div class='avatar'>
+        <img src='https://www.gravatar.com/avatar/${gravatarHash}?s=64&d=blank'>
+      </div>
+      <div>
+        <span><b>${mentor.name}</b><span>
+        <span>${mentor.place}<span>
+        <span><a href='mailto:${mentor.emailId}'>${mentor.emailId}</a></span>
+        <span><a href='${mentor.mozillians_url}' target='_blank'>${mentor.mozillians_url}</a></span>
 
-			</div>`;
+      </div>`;
       const marker = L.marker(mentor.position).addTo(this.map);
 
       marker.bindPopup(popupContent);
@@ -74,44 +66,37 @@ class mentorsMap {
   }
 
   createTableElement() {
-    const inputBox = document.createElement("input");
+    const inputBox = document.createElement('input');
     this.setAttributes(inputBox, {
-      type: "text",
-      id: "searchQuery",
-      placeholder: "Search a mentor"
+      type: 'text',
+      id: 'searchQuery',
+      placeholder: 'Search a mentor'
     });
 
     document.body.appendChild(inputBox);
 
-    const tableDiv = document.createElement("div");
+    const tableDiv = document.createElement('div');
     this.setAttributes(tableDiv, {
       id: this.holder
     });
 
-    const table = document.createElement("table");
-    table.setAttribute("id", this.tableId);
+    const table = document.createElement('table');
+    table.setAttribute('id', this.tableId);
     tableDiv.appendChild(table);
     document.body.appendChild(tableDiv);
 
-    inputBox.addEventListener("keyup", e => {
+    inputBox.addEventListener('keyup', e => {
       this.searchTerm = e.target.value;
       this.populateTable();
     });
   }
 
   sortedMentors() {
-    console.log("mentors", mentors, this.sortKey);
     if (!this.sortKey) return mentors;
-    let sorter =
-      this.sortOrder === "DESC"
-        ? (a, b) =>
-            a[this.sortKey]
-              .toLowerCase()
-              .localeCompare(b[this.sortKey].toLowerCase())
-        : (a, b) =>
-            b[this.sortKey]
-              .toLowerCase()
-              .localeCompare(a[this.sortKey].toLowerCase());
+    const sorter =
+      this.sortOrder === 'DESC'
+        ? (a, b) => a[this.sortKey].toLowerCase().localeCompare(b[this.sortKey].toLowerCase())
+        : (a, b) => b[this.sortKey].toLowerCase().localeCompare(a[this.sortKey].toLowerCase());
     return mentors.sort(sorter);
   }
 
@@ -122,37 +107,33 @@ class mentorsMap {
   }
 
   assignClickHandlers() {
-    ["name", "place", "emailId"].forEach(
-      id =>
-        (document.getElementById(id).onclick = this.handleHeaderClick.bind(
-          this,
-          id
-        ))
+    ['name', 'place', 'emailId'].forEach(
+      id => (document.getElementById(id).onclick = this.handleHeaderClick.bind(this, id))
     );
   }
 
   populateTable() {
     const table = document.getElementById(this.holder).children[0];
     table.innerHTML = `
-			<tr class='header'>
-				<th id="name">Name</th>
-				<th id="place">Place</th>
-				<th id="emailId">Email Id</th>
-			</tr>
-		`;
+      <tr class='header'>
+        <th id="name">Name</th>
+        <th id="place">Place</th>
+        <th id="emailId">Email Id</th>
+      </tr>
+    `;
     this.sortedMentors().forEach(mentor => {
       if (
-        this.searchTerm === "" ||
+        this.searchTerm === '' ||
         mentor.name.toLowerCase().indexOf(this.searchTerm) > -1 ||
         mentor.place.toLowerCase().indexOf(this.searchTerm) > -1 ||
         mentor.emailId.toLowerCase().indexOf(this.searchTerm) > -1
       ) {
         let row = `
-					<tr>
-						<td>${mentor.name}</td>
-						<td>${mentor.place}</td>
-						<td>${mentor.emailId}</td>
-					</tr>`;
+          <tr>
+            <td>${mentor.name}</td>
+            <td>${mentor.place}</td>
+            <td>${mentor.emailId}</td>
+          </tr>`;
         table.innerHTML += row;
       }
     });

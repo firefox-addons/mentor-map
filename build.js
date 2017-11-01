@@ -124,111 +124,147 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 var mentorsMap = function () {
-	function mentorsMap(props) {
-		_classCallCheck(this, mentorsMap);
+  function mentorsMap(props) {
+    _classCallCheck(this, mentorsMap);
 
-		this.mapElement = {};
-		this.map = {};
-		this.mapId = 'mentorsMap';
-		this.mapCenter = [51.505, -0.09];
-		this.mapZoom = 2;
-		this.mapTitleLayer = 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
-		this.holder = 'tableHolder';
-		this.searchTerm = '';
-		this.createMapElement();
-		this.drawMap();
-		this.placeMarkers();
-		this.createTableElement();
-		this.populateTable();
-	}
+    this.mapElement = {};
+    this.map = {};
+    this.mapId = 'mentorsMap';
+    this.mapCenter = [51.505, -0.09];
+    this.mapZoom = 2;
+    this.mapTitleLayer = 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
+    this.holder = 'tableHolder';
+    this.searchTerm = '';
+    this.sortKey = 'name';
+    this.sortOrder = 'ASC';
+    this.createMapElement();
+    this.drawMap();
+    this.placeMarkers();
+    this.createTableElement();
+    this.populateTable();
+  }
 
-	_createClass(mentorsMap, [{
-		key: 'createMapElement',
-		value: function createMapElement() {
-			this.mapElement = document.createElement('div');
-			this.mapElement.setAttribute('id', this.mapId);
-			document.body.appendChild(this.mapElement);
-		}
-	}, {
-		key: 'drawMap',
-		value: function drawMap() {
-			this.map = _leaflet2.default.map(this.mapId).fitBounds(this.getMentorsPositions());
-			_leaflet2.default.tileLayer(this.mapTitleLayer).addTo(this.map);
-		}
-	}, {
-		key: 'getMentorsPositions',
-		value: function getMentorsPositions() {
-			return mentors.map(function (mentor) {
-				return mentor.position;
-			});
-		}
-	}, {
-		key: 'placeMarkers',
-		value: function placeMarkers() {
-			var _this = this;
+  _createClass(mentorsMap, [{
+    key: 'setSortOrder',
+    value: function setSortOrder() {
+      this.sortOrder = this.sortOrder == 'ASC' ? 'DESC' : 'ASC';
+    }
+  }, {
+    key: 'createMapElement',
+    value: function createMapElement() {
+      this.mapElement = document.createElement('div');
+      this.mapElement.setAttribute('id', this.mapId);
+      document.body.appendChild(this.mapElement);
+    }
+  }, {
+    key: 'drawMap',
+    value: function drawMap() {
+      this.map = _leaflet2.default.map(this.mapId).fitBounds(this.getMentorsPositions());
+      _leaflet2.default.tileLayer(this.mapTitleLayer).addTo(this.map);
+    }
+  }, {
+    key: 'getMentorsPositions',
+    value: function getMentorsPositions() {
+      return mentors.map(function (mentor) {
+        return mentor.position;
+      });
+    }
+  }, {
+    key: 'placeMarkers',
+    value: function placeMarkers() {
+      var _this = this;
 
-			mentors.forEach(function (mentor) {
-				var gravatarHash = (0, _md2.default)(mentor.emailId.trim().toLowerCase());
-				var popupContent = '\n\t\t\t<div class=\'avatar\'>\n\t\t\t\t<img src=\'https://www.gravatar.com/avatar/' + gravatarHash + '?s=64&d=blank\'>\n\t\t\t</div>\n\t\t\t<div>\n\t\t\t\t<span><b>' + mentor.name + '</b><span>\n\t\t\t\t<span>' + mentor.place + '<span>\n\t\t\t\t<span><a href=\'mailto:' + mentor.emailId + '\'>' + mentor.emailId + '</a></span>\n\t\t\t\t<span><a href=\'' + mentor.mozillians_url + '\' target=\'_blank\'>' + mentor.mozillians_url + '</a></span>\n\t\t\t\t\n\t\t\t</div>';
-				var marker = _leaflet2.default.marker(mentor.position).addTo(_this.map);
+      mentors.forEach(function (mentor) {
+        var gravatarHash = (0, _md2.default)(mentor.emailId.trim().toLowerCase());
+        var popupContent = '\n      <div class=\'avatar\'>\n        <img src=\'https://www.gravatar.com/avatar/' + gravatarHash + '?s=64&d=blank\'>\n      </div>\n      <div>\n        <span><b>' + mentor.name + '</b><span>\n        <span>' + mentor.place + '<span>\n        <span><a href=\'mailto:' + mentor.emailId + '\'>' + mentor.emailId + '</a></span>\n        <span><a href=\'' + mentor.mozillians_url + '\' target=\'_blank\'>' + mentor.mozillians_url + '</a></span>\n\n      </div>';
+        var marker = _leaflet2.default.marker(mentor.position).addTo(_this.map);
 
-				marker.bindPopup(popupContent);
-			});
-		}
-	}, {
-		key: 'setAttributes',
-		value: function setAttributes(ele, attrs) {
-			for (var key in attrs) {
-				ele.setAttribute(key, attrs[key]);
-			}
-		}
-	}, {
-		key: 'createTableElement',
-		value: function createTableElement() {
-			var _this2 = this;
+        marker.bindPopup(popupContent);
+      });
+    }
+  }, {
+    key: 'setAttributes',
+    value: function setAttributes(ele, attrs) {
+      for (var key in attrs) {
+        ele.setAttribute(key, attrs[key]);
+      }
+    }
+  }, {
+    key: 'createTableElement',
+    value: function createTableElement() {
+      var _this2 = this;
 
-			var inputBox = document.createElement('input');
-			this.setAttributes(inputBox, {
-				type: 'text',
-				id: 'searchQuery',
-				placeholder: 'Search a mentor'
-			});
+      var inputBox = document.createElement('input');
+      this.setAttributes(inputBox, {
+        type: 'text',
+        id: 'searchQuery',
+        placeholder: 'Search a mentor'
+      });
 
-			document.body.appendChild(inputBox);
+      document.body.appendChild(inputBox);
 
-			var tableDiv = document.createElement('div');
-			this.setAttributes(tableDiv, {
-				id: this.holder
-			});
+      var tableDiv = document.createElement('div');
+      this.setAttributes(tableDiv, {
+        id: this.holder
+      });
 
-			var table = document.createElement('table');
-			table.setAttribute('id', this.tableId);
-			tableDiv.appendChild(table);
-			document.body.appendChild(tableDiv);
+      var table = document.createElement('table');
+      table.setAttribute('id', this.tableId);
+      tableDiv.appendChild(table);
+      document.body.appendChild(tableDiv);
 
-			inputBox.addEventListener('keyup', function (e) {
-				_this2.searchTerm = e.target.value;
-				_this2.populateTable();
-			});
-		}
-	}, {
-		key: 'populateTable',
-		value: function populateTable() {
-			var _this3 = this;
+      inputBox.addEventListener('keyup', function (e) {
+        _this2.searchTerm = e.target.value;
+        _this2.populateTable();
+      });
+    }
+  }, {
+    key: 'sortedMentors',
+    value: function sortedMentors() {
+      var _this3 = this;
 
-			var table = document.getElementById(this.holder).children[0];
-			table.innerHTML = '\n\t\t\t<tr class=\'header\'>\n\t\t\t\t<th>Name</th>\n\t\t\t\t<th>Place</th>\n\t\t\t\t<th>Email Id</th>\n\t\t\t</tr>\n\t\t';
-			mentors.forEach(function (mentor) {
+      if (!this.sortKey) return mentors;
+      var sorter = this.sortOrder === 'DESC' ? function (a, b) {
+        return a[_this3.sortKey].toLowerCase().localeCompare(b[_this3.sortKey].toLowerCase());
+      } : function (a, b) {
+        return b[_this3.sortKey].toLowerCase().localeCompare(a[_this3.sortKey].toLowerCase());
+      };
+      return mentors.sort(sorter);
+    }
+  }, {
+    key: 'handleHeaderClick',
+    value: function handleHeaderClick(headerId) {
+      this.sortKey = headerId;
+      this.setSortOrder();
+      this.populateTable();
+    }
+  }, {
+    key: 'assignClickHandlers',
+    value: function assignClickHandlers() {
+      var _this4 = this;
 
-				if (_this3.searchTerm === '' || mentor.name.toLowerCase().indexOf(_this3.searchTerm) > -1 || mentor.place.toLowerCase().indexOf(_this3.searchTerm) > -1 || mentor.emailId.toLowerCase().indexOf(_this3.searchTerm) > -1) {
-					var row = '\n\t\t\t\t\t<tr>\n\t\t\t\t\t\t<td>' + mentor.name + '</td>\n\t\t\t\t\t\t<td>' + mentor.place + '</td>\n\t\t\t\t\t\t<td>' + mentor.emailId + '</td>\n\t\t\t\t\t</tr>';
-					table.innerHTML += row;
-				}
-			});
-		}
-	}]);
+      ['name', 'place', 'emailId'].forEach(function (id) {
+        return document.getElementById(id).onclick = _this4.handleHeaderClick.bind(_this4, id);
+      });
+    }
+  }, {
+    key: 'populateTable',
+    value: function populateTable() {
+      var _this5 = this;
 
-	return mentorsMap;
+      var table = document.getElementById(this.holder).children[0];
+      table.innerHTML = '\n      <tr class=\'header\'>\n        <th id="name">Name</th>\n        <th id="place">Place</th>\n        <th id="emailId">Email Id</th>\n      </tr>\n    ';
+      this.sortedMentors().forEach(function (mentor) {
+        if (_this5.searchTerm === '' || mentor.name.toLowerCase().indexOf(_this5.searchTerm) > -1 || mentor.place.toLowerCase().indexOf(_this5.searchTerm) > -1 || mentor.emailId.toLowerCase().indexOf(_this5.searchTerm) > -1) {
+          var row = '\n          <tr>\n            <td>' + mentor.name + '</td>\n            <td>' + mentor.place + '</td>\n            <td>' + mentor.emailId + '</td>\n          </tr>';
+          table.innerHTML += row;
+        }
+      });
+      this.assignClickHandlers();
+    }
+  }]);
+
+  return mentorsMap;
 }();
 
 var mapIt = new mentorsMap();
