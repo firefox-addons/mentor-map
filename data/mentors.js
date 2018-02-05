@@ -42,5 +42,12 @@ const mentors = [
 			"emailId": "shivams2799@gmail.com",
 			"place": "New Delhi, India",
 			"mozillians_url": "https://mozillians.org/en-US/u/championshuttler/"
+		},
+		{
+			"name": "Jyotsna Gupta",
+			"position": [12.970247, 77.666556],
+			"emailId": "jyotsna17gupta@gmail.com",
+			"place": "Bengaluru, India",
+			"mozillians_url": "https://mozillians.org/en-US/u/jyotsna17gupta/"
 		}
 ];
