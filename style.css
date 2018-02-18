@@ -1,10 +1,18 @@
 body {
 	margin: 20px;
-	font-family: 'Roboto', sans-serif;
+	font-family: 'Zilla Slab', serif;
 }
 
 header {
     text-align: center;
+    font-style: oblique;
+    font-family: 'Zilla Slab', serif;
+    font-size: 23px;
+    color: #6e008b;
+}
+
+#headerContent {
+    color: orange;
 }
 
 #mentorsMap {
